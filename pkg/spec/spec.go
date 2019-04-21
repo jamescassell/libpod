@@ -192,7 +192,7 @@ func CreateConfigToOCISpec(config *CreateConfig) (*spec.Spec, error) { //nolint
 	}
 	g.SetRootReadonly(config.ReadOnlyRootfs)
 
-	if true {
+	if config.HTTPProxy {
 		for _, envSpec := range []string{
 			"http_proxy",
 			"HTTP_PROXY",
