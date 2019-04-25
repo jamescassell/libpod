@@ -546,6 +546,7 @@ func (c *CreateConfig) GetContainerCreateOptions(runtime *libpod.Runtime, pod *l
 	if len(c.HostAdd) > 0 && !c.NoHosts {
 		options = append(options, libpod.WithHosts(c.HostAdd))
 	}
+	options = append(options, libpod.WithUseHostProxyEnv(c.HTTPProxy))
 	logPath := getLoggingPath(c.LogDriverOpt)
 	if logPath != "" {
 		options = append(options, libpod.WithLogPath(logPath))

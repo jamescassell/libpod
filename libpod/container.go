@@ -308,6 +308,10 @@ type ContainerConfig struct {
 	Networks []string `json:"networks,omitempty"`
 	// Network mode specified for the default network.
 	NetMode namespaces.NetworkMode `json:"networkMode,omitempty"`
+	// UseHostProxyEnv indicates that HTTP Proxy environment variables
+	// should be passed into the contaner from the host if not otherwise
+	// specified by the container image.
+	UseHostProxyEnv bool
 
 	// Image Config
 

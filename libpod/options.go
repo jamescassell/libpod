@@ -1223,6 +1223,20 @@ func WithUseImageHosts() CtrCreateOption {
 	}
 }
 
+// WithUseHostProxyEnv tells the container to use HTTP Proxy environment
+// variables from the host if not otherwise specified by the container image.
+func WithUseHostProxyEnv(httpProxy bool) CtrCreateOption {
+	return func(ctr *Container) error {
+		if ctr.valid {
+			return ErrCtrFinalized
+		}
+
+		ctr.config.UseHostProxyEnv = httpProxy
+
+		return nil
+	}
+}
+
 // withIsInfra sets the container to be an infra container. This means the container will be sometimes hidden
 // and expected to be the first container in the pod.
 func withIsInfra() CtrCreateOption {
